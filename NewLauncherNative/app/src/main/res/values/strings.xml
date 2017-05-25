@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NewLauncherNative</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">simpleandroidcoding.com</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="testlanguage">App</string>
+    <string name="allapp">All App</string>
+    <string name="tvapp">TV App</string>
+    <string name="game">Game</string>
+    <string name="space">          </string>
+
+</resources>

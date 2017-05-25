@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="testlanguage">Ứng dụng</string>
+    <string name="allapp">Tất cả ứng dụng</string>
+    <string name="tvapp">Ứng dụng TV</string>
+    <string name="game">Game</string>
+</resources>
