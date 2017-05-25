@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_color">#73000000</color>
+    <color name="icon_color">#000</color>
+    <!--<color name="color_item">#78909c</color>-->
+    <color name="color_item">#8c9eff</color>
+    <color name="background">#212121</color>
+    <color name="test">#616161</color>
+
+
+</resources>
