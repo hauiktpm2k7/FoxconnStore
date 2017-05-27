@@ -1,53 +1,40 @@
 package com.foxconnstore;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+import android.view.MotionEvent;
+import android.view.animation.AnimationUtils;
 import android.widget.RatingBar;
-import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_game;
-
     RatingBar ratingBar;
+    private ViewFlipper mViewFlipper;
+    private Context mContext;
+    private float initialX;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
-/*
-
-        final Dialog  dialog=new Dialog(this,R.style.ThemeDialogCustom);
-        dialog.setContentView(R.layout.mydialog);
-        btn_game= (Button) findViewById(R.id.btn_g);
-        btn_game.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast toast=Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG);
-                toast.show();
-                dialog.dismiss();
-                dialog.show();
-            }
-        });*/
-
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("New App"));
         tabLayout.addTab(tabLayout.newTab().setText("Update"));
         tabLayout.addTab(tabLayout.newTab().setText("App"));
         tabLayout.addTab(tabLayout.newTab().setText("Game"));
-        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-
+        mViewFlipper = (ViewFlipper) this.findViewById(R.id.view_flipper);
+        mViewFlipper.setAutoStart(true);
+        mViewFlipper.setFlipInterval(2000);
+        mViewFlipper.startFlipping();
+        mViewFlipper.setFocusable(true);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
@@ -69,9 +56,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent touchevent) {
+        switch (touchevent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                initialX = touchevent.getX();
+                break;
+            case MotionEvent.ACTION_UP:
+                float finalX = touchevent.getX();
+                if (initialX < finalX) {
+                    if (mViewFlipper.getDisplayedChild() == 1)
+                        break;
 
+                    mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.in_from_left));
+                    mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.out_from_left));
 
-}
+                    mViewFlipper.showNext();
+                } else {
+                    if (mViewFlipper.getDisplayedChild() == 0)
+                        break;
 
+                    mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.in_from_right));
+                    mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.out_from_right));
+
+                    mViewFlipper.showPrevious();
+                }
+                break;
+        }
+        return false;
+    }
 }
 

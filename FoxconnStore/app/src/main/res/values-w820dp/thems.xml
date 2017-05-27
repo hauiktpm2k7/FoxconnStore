@@ -8,10 +8,5 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowSoftInputMode">stateUnspecified</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
-
     </style>
-
-    
-
-
 </resources>

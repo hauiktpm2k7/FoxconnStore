@@ -3,7 +3,6 @@ package com.foxconnstore;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
@@ -20,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -34,13 +32,12 @@ import static android.content.ContentValues.TAG;
 public class NewApp extends Fragment {
     RecyclerView mRecyclerView;
     Context mContext;
+    Button btn_Cancle;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_full_app, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycleview);
-      /*/ LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());*/
-
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -52,7 +49,6 @@ public class NewApp extends Fragment {
     private void setupAdapter() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.hasCategory(Intent.CATEGORY_DEFAULT);
-      //  intent.addCategory(Intent.CATEGORY_LAUNCHER);
         PackageManager packageManager = getActivity().getPackageManager();
 
         final List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent, 0);
@@ -101,12 +97,6 @@ public class NewApp extends Fragment {
             dialog.setContentView(R.layout.mydialog);
                     dialog.dismiss();
                     dialog.show();
-
-           // ActivityInfo activityInfo = mResolveInfo.activityInfo;
-           /* Toast toast=Toast.makeText(getActivity(),"Test"+activityInfo.name,Toast.LENGTH_SHORT);
-            Toast toast2=Toast.makeText(getActivity(),"pACKET"+activityInfo.applicationInfo.packageName,Toast.LENGTH_LONG);
-            toast.show();
-            toast2.show();*/
         }
     }
     private class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
