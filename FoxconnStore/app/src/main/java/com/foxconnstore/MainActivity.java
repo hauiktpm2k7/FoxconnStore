@@ -1,17 +1,18 @@
 package com.foxconnstore;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-
+    Button btn_game;
 
     RatingBar ratingBar;
     @Override
@@ -20,8 +21,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
+/*
+
+        final Dialog  dialog=new Dialog(this,R.style.ThemeDialogCustom);
+        dialog.setContentView(R.layout.mydialog);
+        btn_game= (Button) findViewById(R.id.btn_g);
+        btn_game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast toast=Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG);
+                toast.show();
+                dialog.dismiss();
+                dialog.show();
+            }
+        });*/
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("New App"));
         tabLayout.addTab(tabLayout.newTab().setText("Update"));
@@ -53,23 +70,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Spinner spinner=(Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<String> adapter1=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,time);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter1);
 
-        Spinner spinner2=(Spinner) findViewById(R.id.spinner2);
-        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,luottai);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
-
-        Spinner spinner3=(Spinner) findViewById(R.id.spinner3);
-        ArrayAdapter<String> adapter3=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,rate);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(adapter3);
-
-    }
-    private String[] time={"Mới nhất....","Cũ nhất...."};
-    private String[] luottai={"Nhiều lưọt tải nhất","Ít lượt tải nhất"};
-    private String[] rate={"Tốt nhất....","Tệ nhất...."};
 }
+
+}
+

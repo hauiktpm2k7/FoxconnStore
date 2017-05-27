@@ -1,5 +1,7 @@
 package com.foxconnstore;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -15,10 +17,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,6 +33,7 @@ import static android.content.ContentValues.TAG;
 
 public class NewApp extends Fragment {
     RecyclerView mRecyclerView;
+    Context mContext;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,10 +41,11 @@ public class NewApp extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycleview);
       /*/ LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());*/
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),3);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
         setupAdapter();
+
         return view;
     }
 
@@ -89,24 +93,22 @@ public class NewApp extends Fragment {
             Drawable d = mResolveInfo.loadIcon(packageManager);
             ic_app_icon.setImageDrawable(d);
             tv_name_app.setText(appName);
-
         }
-
         @Override
         public void onClick(View v) {
-            ActivityInfo activityInfo = mResolveInfo.activityInfo;
-           /* Intent intent = new Intent(Intent.ACTION_MAIN).setClassName(activityInfo.applicationInfo.packageName, activityInfo.name);
-            startActivity(intent);*/
-            Toast toast=Toast.makeText(getActivity(),"Test"+activityInfo.name,Toast.LENGTH_SHORT);
+            mContext = itemView.getContext();
+            final Dialog dialog=new Dialog(mContext,R.style.ThemeDialogCustom);
+            dialog.setContentView(R.layout.mydialog);
+                    dialog.dismiss();
+                    dialog.show();
+
+           // ActivityInfo activityInfo = mResolveInfo.activityInfo;
+           /* Toast toast=Toast.makeText(getActivity(),"Test"+activityInfo.name,Toast.LENGTH_SHORT);
             Toast toast2=Toast.makeText(getActivity(),"pACKET"+activityInfo.applicationInfo.packageName,Toast.LENGTH_LONG);
             toast.show();
-            toast2.show();
+            toast2.show();*/
         }
-
-
     }
-
-
     private class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         private List<ResolveInfo> resolveInfoList;
         public MyAdapter(List<ResolveInfo> resolveInfoList) {
@@ -123,12 +125,10 @@ public class NewApp extends Fragment {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             ResolveInfo resolveInfo = resolveInfoList.get(position);
             holder.binData(resolveInfo);
-
         }
         @Override
         public int getItemCount() {
             return resolveInfoList.size();
         }
-
     }
 }

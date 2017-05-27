@@ -29,7 +29,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 UpdateApp tabFragmentGame = new UpdateApp();
                 return tabFragmentGame;
-
             default:
                 return null;
         }

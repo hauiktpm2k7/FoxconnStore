@@ -9,18 +9,34 @@
     android:orientation="vertical"
     android:background="#2196f3"
     >
-
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.4"
+        android:layout_weight="0.5"
         android:background="#2196f3"
-        android:orientation="vertical"
-
+        android:orientation="horizontal"
         >
+        <android.support.v17.leanback.widget.SearchEditText
+                android:layout_marginLeft="5dp"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:background="#fff"
+                androiext="Tìm kiếm"
+                />
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:background="#8bc34a">
+            <Button
+                android:background="@drawable/ic_search"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                />
+        </LinearLayout>
         <TextView
+            android:layout_marginLeft="300dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,169 +45,27 @@
             android:textStyle="bold"
             android:textColor="#fff"
             />
-
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#fff"
         ></View>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="4"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:text="Tìm kiếm"
-                    android:textSize="8dp"/>
-                <android.support.v17.leanback.widget.SearchEditText
-                    android:layout_width="150dp"
-                    android:layout_height="20dp"
-                    android:background="#fff"
-                    androiext="Tìm kiếm"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thể loại"/>
-                <LinearLayout
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:text="-App"
-                        />
-                    <CheckBox
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:text="-Game"
-                        />
-                    <CheckBox
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tiêu chí"/>
-                <LinearLayout
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:text="-Thời gian"
-                        />
-                    <Spinner
-                        android:id="@+id/spinner1"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:text="-Lượt tải"
-                        />
-                    <Spinner
-                        android:id="@+id/spinner2"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:text="-Đánh giá"
-                        />
-                    <Spinner
-                        android:id="@+id/spinner3"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#fff"/>
-
-
-        </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#fff">
-
-        </View>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#424242"
+                android:layout_height="40dp"
+                android:background="#607d8b"
                 android:elevation="6dp"
                 app:tabMaxWidth="0dp"
                 app:tabGravity="fill"
@@ -199,8 +73,9 @@
                 android:minHeight="?attr/actionBarSize"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 />
-
             <android.support.v4.view.ViewPager
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -213,7 +88,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#fff">
-
     </View>
     <LinearLayout
         android:layout_height="0dp"
@@ -221,8 +95,8 @@
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center">
-
         <Button
+            android:id="@+id/btn_g"
             android:layout_margin="5dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -252,9 +126,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="0.5"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -271,6 +144,5 @@
             android:text="ĐC:KCN Đình trám,Hoàng Ninh,Việt Yên,Bắc Giang"
             />
     </LinearLayout>
-
 </LinearLayout>
 
